@@ -14,14 +14,10 @@ type Merger struct {
 	OverwriteDiscord bool
 }
 
-var standard Merger
-
-func init() {
-	standard = Merger{}
-}
+var standardMerger = &Merger{}
 
 func Merge(i, o interface{}) error {
-	return standard.Merge(i, o)
+	return standardMerger.Merge(i, o)
 }
 func (m *Merger) Merge(i, o interface{}) error {
 	if it := reflect.TypeOf(i); it.Kind() != reflect.Map {
